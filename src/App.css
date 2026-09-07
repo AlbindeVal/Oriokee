@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  background: #f3eadb;
+  color: #4a4037;
+}
+
+main {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 45px 35px;
+  text-align: center;
+  background: #fffaf1;
+  border-radius: 24px;
+  box-shadow: 0 10px 35px rgba(70, 50, 30, 0.12);
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #59483b;
+  letter-spacing: -1px;
+}
+
+h2 {
+  margin-top: 5px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #8b6f52;
+}
+
+p {
+  color: #75685b;
+  font-size: 1rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 500px;
+  margin: 30px auto;
+  border-radius: 14px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img.fade {
+  opacity: 0;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 12px;
+  background: #b58b68;
+  color: white;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background: #967052;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(70, 50, 30, 0.15);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.day-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0 30px;
+}
+
+.day-controls p {
+  min-width: 100px;
+  margin: 0;
+  font-weight: 600;
+}
