@@ -5,9 +5,9 @@ const patterns = [
   {
     name: "Crane",
     steps: [
-      "public/patterns/test1.png",
-      "public/patterns/test2.png",
-      "publicgi/patterns/test3.png",
+      `${import.meta.env.BASE_URL}patterns/test1.png`,
+      `${import.meta.env.BASE_URL}patterns/test2.png`,
+      `${import.meta.env.BASE_URL}patterns/test3.png`,
     ],
   },
   {
