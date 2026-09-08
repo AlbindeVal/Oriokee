@@ -5,9 +5,9 @@ const patterns = [
   {
     name: "Crane",
     steps: [
-      "/patterns/test1.png",
-      "/patterns/test2.png",
-      "/patterns/test3.png",
+      "public/patterns/test1.png",
+      "public/patterns/test2.png",
+      "publicgi/patterns/test3.png",
     ],
   },
   {
