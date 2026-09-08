@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
+//lägga till svårighet och kommentarer till steg
 const patterns = [
   {
     name: "Crane",
@@ -13,17 +14,17 @@ const patterns = [
   {
     name: "Santa",
     steps: [
-      "/patterns/boat1.png",
-      "/patterns/boat2.png",
-      "/patterns/boat3.png",
+      `${import.meta.env.BASE_URL}patterns/test1.png`,
+      `${import.meta.env.BASE_URL}patterns/test2.png`,
+      `${import.meta.env.BASE_URL}patterns/test3.png`,
     ],
   },
   {
     name: "Baloon rabbit",
     steps: [
-      "/patterns/frog1.png",
-      "/patterns/frog2.png",
-      "/patterns/frog3.png",
+      `${import.meta.env.BASE_URL}patterns/test1.png`,
+      `${import.meta.env.BASE_URL}patterns/test2.png`,
+      `${import.meta.env.BASE_URL}patterns/test3.png`,
     ],
   },
 ];
@@ -44,6 +45,16 @@ function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [step, setStep] = useState(0);
   const [isFading, setIsFading] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(() => {
+    const savedDate = localStorage.getItem("origamiCompletedDate");
+    const today = new Date().toLocaleDateString("en-CA");
+
+    return savedDate === today;
+  });
+
+  const [streak, setStreak] = useState(() => {
+    return Number(localStorage.getItem("origamiStreak")) || 0;
+  });
 
   const pattern = getPatternForDate(selectedDate);
 
@@ -64,16 +75,45 @@ function App() {
     }, 400);
   }
 
+  function finishPattern() {
+    const today = new Date().toLocaleDateString("en-CA");
+
+    const lastCompleted = localStorage.getItem("origamiCompletedDate");
+    const savedStreak = Number(localStorage.getItem("origamiStreak")) || 0;
+
+    let newStreak = 1;
+
+    if (lastCompleted) {
+      const lastDate = new Date(lastCompleted);
+      const currentDate = new Date(today);
+
+      const difference = (currentDate - lastDate) / (1000 * 60 * 60 * 24);
+
+      if (difference === 1) {
+        newStreak = savedStreak + 1;
+      } else if (difference === 0) {
+        newStreak = savedStreak;
+      }
+    }
+
+    localStorage.setItem("origamiCompletedDate", today);
+    localStorage.setItem("origamiStreak", newStreak);
+
+    setStreak(newStreak);
+    setIsCompleted(true);
+  }
+
   return (
     <main>
       <h1>Origami of the Day (Version 0.1)</h1>
 
       <div className="day-controls">
-        <button onClick={() => changeDay(-1)}>← Previous Day</button>
+        {/* <button onClick={() => changeDay(-1)}>← Previous Day</button> */}
 
         <p>{selectedDate.toLocaleDateString("en-GB")}</p>
+        <p>🔥 {streak} day streak</p>
 
-        <button onClick={() => changeDay(1)}>Next Day →</button>
+        {/* <button onClick={() => changeDay(1)}>Next Day →</button> */}
       </div>
 
       <p>Today's pattern:</p>
@@ -105,6 +145,20 @@ function App() {
           Next →
         </button>
       </div>
+      {step === pattern.steps.length - 1 && (
+        <div>
+          {!isCompleted ? (
+            <>
+              <p> </p>
+              <button className="finish-button" onClick={finishPattern}>
+                Finished!
+              </button>
+            </>
+          ) : (
+            <p className="completed">✓ Today's origami completed!</p>
+          )}
+        </div>
+      )}
 
       <section className="spotify-section">
         <p>Remember to take your time and relax, there is no time limit</p>

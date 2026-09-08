@@ -82,6 +82,25 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.completed {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.finish-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.finish-button:hover {
+  background-color: #43a047;
+}
+
 .day-controls {
   display: flex;
   justify-content: center;
