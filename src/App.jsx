@@ -105,7 +105,7 @@ function App() {
 
   return (
     <main>
-      <h1>Origami of the Day (Version 0.1)</h1>
+      <h1>Origami of the Day</h1>
 
       <div className="day-controls">
         {/* <button onClick={() => changeDay(-1)}>← Previous Day</button> */}
