@@ -34,7 +34,7 @@ function getPatternForDate(date) {
 
   const difference = date - start;
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24)); //converting a time difference from milliseconds into whole days.
 
   return patterns[
     ((days % patterns.length) + patterns.length) % patterns.length
